@@ -1,30 +1,70 @@
+<br>
+<br>
+<br>
+<div class="bg-white shadow mx-auto p-6 rounded-lg max-w-2xl">
+  <h1 class="mb-6 font-bold text-3x1 text-gray-900">LISTA ALUMNOS</h1>
+  <form [formGroup]="formulario">
+    <div class="mb-5">
+      <br>
+      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+        Matricula
+      </label>
+      <input type="text" id="name" name="name" required
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+        placeholder="Matricula"
+        formControlName="matricula"
 
+        >
+ 
+      <br>
+      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+        Nombre
+      </label>
+      <input type="text" id="name" name="name" required
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+        placeholder="Nombre"
+        formControlName="nombre"
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+        >
+ 
+      <br>
+      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+        Correo
+      </label>
+      <input type="text" id="name" name="name" required
+      class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+      placeholder="Correo"
+        formControlName="correo"
 
-
-
-<form class="space-y-4 mx-auto max-w-sm">
-    <div>
-        <label for="visitors" class="block mb-2.5 font-medium text-heading text-sm">Nombre</label>
-        <input type="text" id="visitors" class="block bg-neutral-secondary-medium shadow-xs px-2.5 py-2 border border-default-medium focus:border-brand rounded-base focus:ring-brand w-full text-heading placeholder:text-body text-sm" placeholder="" required />
+      >
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 font-medium text-heading text-sm">Materias a cursar</label>
-        <input type="text" id="visitors" class="block bg-neutral-secondary-medium shadow-xs px-3 py-2.5 border border-default-medium focus:border-brand rounded-base focus:ring-brand w-full text-heading placeholder:text-body text-sm" placeholder="" required />
-    </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 font-medium text-heading text-sm">Cantidad de alumnos</label>
-        <input type="text" id="visitors" class="block bg-neutral-secondary-medium shadow-xs px-3.5 py-3 border border-default-medium focus:border-brand rounded-base focus:ring-brand w-full text-heading placeholder:text-body text-base" placeholder="" required />
-    </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 font-medium text-heading text-sm">Material de clase</label>
-        <input type="text" id="visitors" class="block bg-neutral-secondary-medium shadow-xs px-4 py-3.5 border border-default-medium focus:border-brand rounded-base focus:ring-brand w-full text-heading placeholder:text-body text-base" placeholder="" required />
-    </div>
-</form>
+    
+      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+        Materia
+      </label>
+      <input type="text" id="name" name="name" required
+      class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+      placeholder="Materia"
+        formControlName="materia"
+>
+   
+    <div class="flex justify-center mt-5">
+        <button type="submit"
+          class="bg-blue-700 hover:bg-blue-800 disabled:opacity-50 px-5 py-2.5 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-white text-sm disabled:cursor-not-allowed"
+          (click)="muestraAlumnos()"
+          >Registrar
+        </button>
+
+      </div>
+
+
+<div class="bg-white shadow mx-auto p-6 rounded-lg max-w-2xl">
+    <h1>Matrícula: {{ alumno.matricula }}</h1>  
+    <h1>Nombre: {{ alumno.nombre }}</h1>  
+    <h1>Correo: {{ alumno.correo }}</h1>  
+    <h1>Materia: {{ alumno.materia }}</h1>  
+        </div>
+
+
+  </form>
+</div>
