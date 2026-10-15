@@ -1,49 +1,48 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-    
     {
-        path:'formularios',
-        children:[
+        path: 'formularios',
+        children: [
             {
-                path:'usuarios',
-                loadComponent:()=>
+                path: 'usuarios',
+                loadComponent: () =>
                     import('./formularios/usuarios/usuarios').then(
-                        (c)=>c.Usuarios
+                        (c) => c.Usuarios
                     )
             },
-             {
-                path:'zodiaco',
-                loadComponent:()=>
+            {
+                path: 'zodiaco',
+                loadComponent: () =>
                     import('./formularios/zodiaco/zodiaco').then(
-                        (c)=>c.Zodiaco
+                        (c) => c.Zodiaco
                     )
             },
+            {
+                path: 'registros-zodiaco',
+                loadComponent: () =>
+                    import('./formularios/zodiaco/ver-zodiaco').then(
+                        (c) => c.VerZodiaco
+                    )
+            }
         ],
     },
     {
-
-        path:'escuela',
-        children:[
+        path: 'escuela',
+        children: [
             {
-                path:'lista-alumnos',
-                loadComponent:()=>
+                path: 'lista-alumnos',
+                loadComponent: () =>
                     import('./escuela/lista-alumnos/lista-alumnos').then(
-                        (c)=>c.ListaAlumnos
+                        (c) => c.ListaAlumnos
                     )
             }
         ]
     },
-
-
-   
     {
-        path:'',redirectTo: 'admin',pathMatch: 'full'
+        path: '', redirectTo: 'admin', pathMatch: 'full'
     },
     {
-        path:'**', redirectTo:'admin'
+        path: '**', redirectTo: 'admin'
     },
-
-
-
 ];

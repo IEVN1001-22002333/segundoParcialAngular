@@ -1,70 +1,109 @@
-<br>
-<br>
-<br>
 <div class="bg-white shadow mx-auto p-6 rounded-lg max-w-2xl">
-  <h1 class="mb-6 font-bold text-3x1 text-gray-900">LISTA ALUMNOS</h1>
-  <form [formGroup]="formulario">
-    <div class="mb-5">
-      <br>
-      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
-        Matricula
-      </label>
-      <input type="text" id="name" name="name" required
-        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
-        placeholder="Matricula"
-        formControlName="matricula"
+  <h1 class="mb-6 font-bold text-gray-900 text-3xl">
+    LISTA ALUMNOS
+  </h1>
 
-        >
- 
-      <br>
+  <form [formGroup]="formulario" (ngSubmit)="muestraAlumnos()">
+    <div class="mb-5">
       <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+        Matrícula
+      </label>
+      <input
+        type="text"
+        id="matricula"
+        formControlName="matricula"
+        placeholder="Matrícula"
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+      >
+
+      <label for="nombre" class="block mt-4 mb-2 font-medium text-gray-900 text-sm">
         Nombre
       </label>
-      <input type="text" id="name" name="name" required
-        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
-        placeholder="Nombre"
+      <input
+        type="text"
+        id="nombre"
         formControlName="nombre"
+        placeholder="Nombre"
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+      >
 
-        >
- 
-      <br>
-      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+      <label for="correo" class="block mt-4 mb-2 font-medium text-gray-900 text-sm">
         Correo
       </label>
-      <input type="text" id="name" name="name" required
-      class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
-      placeholder="Correo"
+      <input
+        type="email"
+        id="correo"
         formControlName="correo"
-
+        placeholder="Correo"
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
       >
-    </div>
-    
-      <label for="matricula" class="block mb-2 font-medium text-gray-900 text-sm">
+
+      <label for="materia" class="block mt-4 mb-2 font-medium text-gray-900 text-sm">
         Materia
       </label>
-      <input type="text" id="name" name="name" required
-      class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
-      placeholder="Materia"
+      <input
+        type="text"
+        id="materia"
         formControlName="materia"
->
-   
-    <div class="flex justify-center mt-5">
-        <button type="submit"
-          class="bg-blue-700 hover:bg-blue-800 disabled:opacity-50 px-5 py-2.5 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-white text-sm disabled:cursor-not-allowed"
-          (click)="muestraAlumnos()"
-          >Registrar
-        </button>
+        placeholder="Materia"
+        class="block bg-gray-50 p-2.5 border border-gray-300 focus:border-blue-500 rounded-lg focus:ring-blue-500 w-full text-gray-900 text-sm"
+      >
+    </div>
 
-      </div>
+    <div class="flex justify-center gap-4 mt-5">
+      <button
+        type="submit"
+        class="bg-blue-700 hover:bg-blue-800 px-5 py-2.5 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium text-white text-sm cursor-pointer"
+      >
+        Registrar
+      </button>
 
-
-<div class="bg-white shadow mx-auto p-6 rounded-lg max-w-2xl">
-    <h1>Matrícula: {{ alumno.matricula }}</h1>  
-    <h1>Nombre: {{ alumno.nombre }}</h1>  
-    <h1>Correo: {{ alumno.correo }}</h1>  
-    <h1>Materia: {{ alumno.materia }}</h1>  
-        </div>
-
-
+      <button
+        type="button"
+        (click)="cargarAlumnos()"
+        class="bg-gray-700 hover:bg-gray-800 px-5 py-2.5 rounded-lg focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium text-white text-sm cursor-pointer"
+      >
+        Cargar
+      </button>
+    </div>
   </form>
+
+  <div class="mt-6">
+    <h2 class="mb-4 font-bold text-gray-900 text-xl">
+      Alumnos registrados
+    </h2>
+
+    @if (alumnos.length === 0) {
+      <div class="text-gray-500">
+        No hay alumnos registrados.
+      </div>
+    } @else {
+      @for (alumno of alumnos; track alumno.matricula; let i = $index) {
+        <div class="flex justify-between items-center bg-gray-50 mb-3 p-4 border border-gray-200 rounded-lg">
+          <div>
+            <p><strong>Matrícula:</strong> {{ alumno.matricula }}</p>
+            <p><strong>Nombre:</strong> {{ alumno.nombre }}</p>
+            <p><strong>Correo:</strong> {{ alumno.correo }}</p>
+            <p><strong>Materia:</strong> {{ alumno.materia }}</p>
+          </div>
+          <div class="flex space-x-2">
+            <button 
+              type="button" 
+              (click)="editarAlumnos(i)" 
+              class="bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-md font-medium text-white text-xs cursor-pointer"
+            >
+              Modificar
+            </button>
+            <button 
+              type="button" 
+              (click)="eliminarAlumno(i)" 
+              class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-md font-medium text-white text-xs cursor-pointer"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      }
+    }
+  </div>
 </div>
